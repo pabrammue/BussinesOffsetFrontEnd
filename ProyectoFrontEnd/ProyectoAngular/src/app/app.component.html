@@ -1,6 +1,22 @@
 <mat-toolbar color="primary" class="header">
-  <img src="http://localhost:4200/src/assets/images/Logo1Solo.png" alt="Logo" class="logo">
-  <span class="title">Mi Aplicación</span>
+  <img src="assets/logo.png" alt="Logo" class="logo">
+  <span class="titulo">Mi Aplicación</span>
 </mat-toolbar>
+<mat-sidenav-container class="app-container">
+  <!-- Barra lateral -->
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item routerLink="login">Login</a>
+      <a mat-list-item routerLink="/pagina2">Página 2</a>
+      <a mat-list-item routerLink="/pagina3">Página 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<router-outlet></router-outlet>
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <!-- Contenido dinámico -->
+    <div class="contenido">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

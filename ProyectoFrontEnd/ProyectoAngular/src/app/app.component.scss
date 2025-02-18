@@ -2,7 +2,54 @@
 
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 
-#header {
+
+.app-container {
+  height: 100vh;
+  display: flex;
+}
+
+// Sidebar
+.sidenav {
+  width: 250px;
+  background-color: #9dffb1;
+  color: black;
+
+  mat-nav-list {
+    a {
+      color: black;
+      text-decoration: none;
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+// Header
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+
+  .logo {
+    height: 40px;
+    position: absolute;
+    left: 15px;
+  }
+
+  .titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+// Contenido
+.contenido {
+  padding: 20px;
+}
+mat-toolbar {
     @include mat.toolbar-overrides((
       container-background-color: #9dffb1, 
       container-text-color: black,
