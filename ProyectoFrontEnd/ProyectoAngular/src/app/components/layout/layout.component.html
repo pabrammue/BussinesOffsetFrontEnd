@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="header">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <span class="titulo">Mi Aplicación</span>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="construccion">Pedidos</a>
+        <a mat-list-item routerLink="construccion">Página 2</a>
+        <a mat-list-item routerLink="construccion">Página 3</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <div class="contenido">
+        <router-outlet></router-outlet> 
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
