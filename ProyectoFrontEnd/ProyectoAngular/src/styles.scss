@@ -5,3 +5,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    image-rendering: optimizeQuality;
+    background-image: url(./assets/images/fondo.jpg);
+    background-size: cover; /* Agrega esta propiedad para que la imagen se expanda */
+    background-position: center; /* Agrega esta propiedad para que la imagen se centre */
+    background-repeat: no-repeat; /* Agrega esta propiedad para que la imagen no se repita */
+  }
