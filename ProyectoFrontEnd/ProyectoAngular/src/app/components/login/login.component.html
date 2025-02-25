@@ -1,16 +1,16 @@
 <body>
   <div class="login-container">
     <img class="logo" src="Logo1.png" alt="Logo">
-    <form>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
       <div class="container">
         <h2>Iniciar Sesión</h2>
         <div class="input-container">
-          <input type="text" placeholder="Nombre" maxlength="15">
+          <input type="email" placeholder="correo" formControlName="email">
         </div>
         <div class="input-container">
-          <input type="text" placeholder="Apellido" maxlength="25">
+          <input type="password" placeholder="contraseña" formControlName="password">
         </div>
-        <button mat-raised-button color="primary">Iniciar Sesión</button>
+        <button mat-raised-button color="primary" [disabled]="formulario.invalid">Iniciar Sesión</button>
       </div>
     </form>
   </div>
