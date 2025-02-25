@@ -1,9 +1,7 @@
 export interface Productos {
     id:number
     nombre:string
-    precioUnitario:number
-    baseImponible:number
+    porcentajeIVA:number
     stock:number
-    idProveedor:number
     idCategoria:number
 }
