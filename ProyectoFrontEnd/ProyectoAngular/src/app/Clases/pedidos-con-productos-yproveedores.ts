@@ -1,5 +1,5 @@
-import { Productos } from "./productos"
-import { Proveedores } from "./proveedores"
+import { Producto } from "./producto"
+import { Proveedor } from "./proveedor"
 
 export interface PedidosConProductosYProveedores {
     id:number
@@ -7,6 +7,6 @@ export interface PedidosConProductosYProveedores {
     precioTotal:number
     precioBruto:number
     proveedorSeleccionado:number
-    listaProveedores:Proveedores[]
-    listaProductos:Productos[]
+    listaProveedores:Proveedor[]
+    listaProductos:Producto[]
 }
