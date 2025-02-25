@@ -10,15 +10,16 @@ import { provideDatabase } from '@angular/fire/database'; // Si usas base de dat
 import { provideFirestore } from '@angular/fire/firestore'; // Si usas Firestore
 import { provideStorage } from '@angular/fire/storage'; // Si usas almacenamiento
 import { getAuth } from 'firebase/auth';
+import {firebase} from '../environments/environments'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA7PD6Rqbi5PzX2emJKTvKzMlE17OtoOuQ",
-  authDomain: "business-offset.firebaseapp.com",
-  projectId: "business-offset",
-  storageBucket: "business-offset.firebasestorage.app",
-  messagingSenderId: "220771304303",
-  appId: "1:220771304303:web:f68b757bd002f1c1635e9a",
-  measurementId: "G-E052HJED1B"
+  apiKey: firebase.apiKey,
+  authDomain: firebase.authDomain,
+  projectId: firebase.projectId,
+  storageBucket: firebase.storageBucket,
+  messagingSenderId: firebase.messagingSenderId,
+  appId: firebase.appId,
+  measurementId: firebase.measurementId
 };
 
 export const appConfig: ApplicationConfig = {
