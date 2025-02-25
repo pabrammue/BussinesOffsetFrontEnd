@@ -11,8 +11,7 @@ export const routes: Routes = [
         children: 
         [
             { path: 'pedidos', component: PedidosComponent },
-            { path: 'construccion', component: PaginaEnConstruccionComponent },
-            { path: '**', redirectTo: 'pedidos' }
+            { path: 'construccion', component: PaginaEnConstruccionComponent }
         ]
     }
 ];
