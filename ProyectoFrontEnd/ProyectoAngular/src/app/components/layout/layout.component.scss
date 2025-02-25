@@ -1,25 +1,30 @@
 @use '@angular/material' as mat;
 
-// Customize the entire app. Change :root to your selector if you want to scope the styles.
-
-
+// Estilos generales
 .app-container {
   height: 100vh;
   display: flex;
+  background-color: #f4f4f4;
 }
 
 // Sidebar
 .sidenav {
-  width: 250px;
-  background-color: #9dffb1;
-  color: black;
+  width: 280px;
+  background-color: #4CAF50;
+  color: white;
+  padding-top: 20px;
 
   mat-nav-list {
     a {
-      color: black;
+      color: white;
       text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 12px 20px;
+      display: block;
+      border-radius: 4px;
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.2);
       }
     }
   }
@@ -30,28 +35,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 15px;
+  background: linear-gradient(135deg, #388E3C, #1B5E20);
+  color: white;
   position: relative;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   .logo {
-    height: 40px;
+    height: 45px;
     position: absolute;
-    left: 15px;
+    left: 20px;
   }
 
   .titulo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
   }
 }
 
-// Contenido
+// Contenido principal
 .contenido {
-  padding: 20px;
+  padding: 25px;
+  flex-grow: 1;
+  background: white;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+// Personalización de mat-toolbar
 mat-toolbar {
-    @include mat.toolbar-overrides((
-      container-background-color: #9dffb1, 
-      container-text-color: black,
-    ));
-  }
+  @include mat.toolbar-overrides((
+    container-background-color: #4CAF50,
+    container-text-color: white,
+  ));
+}

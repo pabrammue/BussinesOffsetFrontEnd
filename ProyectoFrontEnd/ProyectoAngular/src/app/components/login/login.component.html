@@ -1,17 +1,17 @@
-<button mat-raised-button id="btn">Basic</button>
-<div class="login-container">
-    <h2>Iniciar Sesión</h2>
+<body>
+  <div class="login-container">
+    <img class="logo" src="Logo1.png" alt="Logo">
     <form>
-      <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <input matInput type="text">
-      </mat-form-field>
-  
-      <mat-form-field>
-        <mat-label>Contraseña</mat-label>
-        <input matInput type="password">
-      </mat-form-field>
-  
-      <button mat-raised-button color="primary">Ingresar</button>
+      <div class="container">
+        <h2>Iniciar Sesión</h2>
+        <div class="input-container">
+          <input type="text" placeholder="Nombre" maxlength="15">
+        </div>
+        <div class="input-container">
+          <input type="text" placeholder="Apellido" maxlength="25">
+        </div>
+        <button mat-raised-button color="primary">Iniciar Sesión</button>
+      </div>
     </form>
   </div>
+</body>
