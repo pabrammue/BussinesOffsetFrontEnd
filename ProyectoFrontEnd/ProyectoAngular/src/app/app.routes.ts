@@ -8,7 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 export const routes: Routes = [
     { path: 'login', component: LoginComponent }, 
     {
-        path: '', component: LayoutComponent, canActivate:[AuthGuard], // el error ocurre si pongo el canActivate
+        path: '', component: LayoutComponent, //canActivate:[AuthGuard],
         children: 
         [
             { path: 'pedidos', component: PedidosComponent },
