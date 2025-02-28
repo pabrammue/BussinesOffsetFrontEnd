@@ -3,11 +3,12 @@ import { LoginComponent } from './components/login/login.component';
 import { PaginaEnConstruccionComponent } from './components/pagina-en-construccion/pagina-en-construccion.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent }, 
     {
-        path: '', component: LayoutComponent, 
+        path: '', component: LayoutComponent, canActivate:[AuthGuard], // el error ocurre si pongo el canActivate
         children: 
         [
             { path: 'pedidos', component: PedidosComponent },
