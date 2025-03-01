@@ -1,0 +1,8 @@
+<div *ngIf="existePedido; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <h1>Detalles del pedido nº: {{ pedidoId }}</h1>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h1>No existe esta página</h1>
+</ng-template>

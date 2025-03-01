@@ -55,6 +55,7 @@
 
 // Contenido principal
 .contenido {
+  width: 75vw;
   padding: 25px;
   flex-grow: 1;
   background: white;
@@ -62,6 +63,18 @@
   margin: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+/*.contenido {
+  width: 90vw;
+  height: 90vh; // Alto fijo
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  margin: auto; // Centra el div horizontalmente dentro de su contenedor
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  //display: flex; 
+  justify-content: center; 
+  align-items: center;
+}*/
 
 // Personalización de mat-toolbar
 mat-toolbar {

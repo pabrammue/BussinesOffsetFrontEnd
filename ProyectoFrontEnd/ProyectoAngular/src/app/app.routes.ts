@@ -3,6 +3,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PaginaEnConstruccionComponent } from './components/pagina-en-construccion/pagina-en-construccion.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { DetallesPedidoComponent } from './components/detalles-pedido/detalles-pedido.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -12,6 +13,7 @@ export const routes: Routes = [
         children: 
         [
             { path: 'pedidos', component: PedidosComponent },
+            { path: 'detallesPedidos/:id', component: DetallesPedidoComponent },
             { path: 'construccion', component: PaginaEnConstruccionComponent }
         ]
     }
