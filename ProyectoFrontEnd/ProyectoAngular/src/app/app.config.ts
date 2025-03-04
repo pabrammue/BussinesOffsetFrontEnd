@@ -9,7 +9,7 @@ import { initializeApp } from 'firebase/app';
 import { FirebaseApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth } from '@angular/fire/auth'; // Si necesitas autenticación
 import { getAuth } from 'firebase/auth';
-import {firebase} from '../environments/environments'
+import {firebase} from '../environments/environments';
 
 const firebaseConfig = {
   apiKey: firebase.apiKey,
