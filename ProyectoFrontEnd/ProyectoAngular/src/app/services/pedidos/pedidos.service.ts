@@ -8,7 +8,7 @@ import { PedidosConProductosYProveedores } from '../../Clases/pedidos-con-produc
   providedIn: 'root'
 })
 export class PedidosService {
-  urlApi="https://localhost:7091/api/pedido";
+  urlApi="http://localhost:5030/api/pedido";
 
   constructor() { }
   http = inject(HttpClient); //esto hace que nada del html se vea

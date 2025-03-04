@@ -26,9 +26,9 @@ export class PedidosComponent implements OnInit {
   constructor(private pedidosServicio: PedidosService, private router: Router){ }
 
   obtenerPedidos(): void{
-    this.listadoPedidos = this.pedidosServicio.listadoPedidos()
+    //this.listadoPedidos = this.pedidosServicio.listadoPedidos()
 
-    /*this.pedidosServicio.getPedidos().subscribe({
+    this.pedidosServicio.getPedidos().subscribe({
       next:(response) =>{ 
         this.listadoPedidos = response;
       },
@@ -40,7 +40,7 @@ export class PedidosComponent implements OnInit {
           alert("Ha ocurrido un error al obtener los datos del servidor");   
         }
       }
-    });*/
+    });
   }
 
   abrirDetallesPedido(id): void{
