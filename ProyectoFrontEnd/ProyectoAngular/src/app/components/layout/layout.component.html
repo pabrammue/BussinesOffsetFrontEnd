@@ -1,6 +1,10 @@
 <mat-toolbar color="primary" class="header">
-    <img src="Logo1Solo.png" alt="Logo" class="logo">
-    <span class="titulo">Mi Aplicación</span>
+  <div class="logoLink">
+    <a routerLink="" >
+      <img src="Logo1Solo.png" alt="Logo" class="logo">
+    </a>
+  </div>
+  <span class="titulo">Bussiness Offset</span>
   </mat-toolbar>
   
   <mat-sidenav-container class="app-container">
@@ -14,7 +18,7 @@
   
     <mat-sidenav-content>
       <div class="contenido">
-        <router-outlet></router-outlet> 
+        <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
