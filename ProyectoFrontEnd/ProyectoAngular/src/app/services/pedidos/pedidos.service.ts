@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pedido } from '../../Clases/pedido';
+import { PedidoConDetallesProducto } from '../../Clases/PedidoConDetallesProducto';
 import { PedidosConProductosYProveedores } from '../../Clases/pedidos-con-productos-yproveedores';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class PedidosService {
   constructor() { }
   http = inject(HttpClient); //esto hace que nada del html se vea
 
-  pedido: Pedido = {id: 1, fecha: new Date(2000, 0, 2), precioTotal: 300, precioBruto: 5646, idProveedor: 1, nombreProveedor: "Cocacola"}
+  /*pedido: Pedido = {id: 1, fecha: new Date(2000, 0, 2), precioTotal: 300, precioBruto: 5646, idProveedor: 1, nombreProveedor: "Cocacola"}
 
   listaPedidos: Pedido[] = [
     { id: 1, fecha: new Date(2023, 0, 10), precioTotal: 300, precioBruto: 5646, idProveedor: 1, nombreProveedor: "Coca-Cola" },
@@ -52,10 +53,14 @@ export class PedidosService {
       }
     });
     return ped;
-  }
+  }*/
 
 
   getPedidos(): Observable<Pedido[]>{
     return this.http.get<Pedido[]>(this.urlApi);   
+  }
+
+  getPedidoDetalles(id): Observable<PedidoConDetallesProducto>{
+    return this.http.get<PedidoConDetallesProducto>(this.urlApi + "/" + id);
   }
 }

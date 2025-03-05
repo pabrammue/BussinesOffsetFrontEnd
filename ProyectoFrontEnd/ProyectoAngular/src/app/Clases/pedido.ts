@@ -4,5 +4,6 @@ export interface Pedido {
     precioTotal:number
     precioBruto:number
     idProveedor:number
+    aceptado: boolean
     nombreProveedor:string
 }
