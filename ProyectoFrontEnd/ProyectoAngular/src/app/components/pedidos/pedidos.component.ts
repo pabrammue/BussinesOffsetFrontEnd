@@ -47,6 +47,10 @@ export class PedidosComponent implements OnInit {
     this.router.navigate(['detallesPedidos', id]);// navegar a otra vista y pasarle el id
   }
 
+  abrirCrearPedido(): void{
+    this.router.navigate(['crearNuevoPedido'])
+  }
+
   ngOnInit(): void {    
     this.obtenerPedidos(); 
   }

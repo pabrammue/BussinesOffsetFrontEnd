@@ -6,6 +6,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { DetallesPedidoComponent } from './components/detalles-pedido/detalles-pedido.component';
 import { AuthGuard } from './guards/auth.guard';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { CrearPedidoComponent } from './components/crear-pedido/crear-pedido.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent }, 
@@ -16,6 +17,7 @@ export const routes: Routes = [
             { path: '', component: InicioComponent },
             { path: 'pedidos', component: PedidosComponent },
             { path: 'detallesPedidos/:id', component: DetallesPedidoComponent },
+            { path: 'crearNuevoPedido', component: CrearPedidoComponent },
             { path: 'construccion', component: PaginaEnConstruccionComponent }
         ]
     }

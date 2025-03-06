@@ -1,6 +1,6 @@
 <div class="contenido">
   <h1>Listado de Pedidos</h1>
-  <button mat-raised-button class="btn">Nuevo</button>
+  <button mat-raised-button class="btn" (click)="abrirCrearPedido()">Nuevo</button>
   <h1 *ngIf="datosEncontrados; then thenBlock else elseBlock">Pedidos a proveedores</h1>
 
 

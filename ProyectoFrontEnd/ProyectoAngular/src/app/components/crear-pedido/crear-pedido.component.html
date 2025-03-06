@@ -1,0 +1,22 @@
+<mat-card class="pedido-card">
+    <mat-card-header>
+      <mat-card-title>CREAR UN NUEVO PEDIDO</mat-card-title> 
+      <mat-card-subtitle>Subtitulo</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <h3>Selecciona un proveedor</h3>
+        <select name="selectProveedores" id="selectProveedores" [(ngModel)]="proveedorSeleccionado" (change)="onProveedorChange()">
+            <option *ngFor="let proveedor of listaProveedores" [ngValue]="proveedor">
+                {{ proveedor.nombre }}
+            </option>
+        </select>
+
+        <h3>Categorias</h3>
+        <select name="selectCategorias" id="selectCategorias">
+            <option *ngFor="let categoria of listaCategoriasProveedor" [value]="categoria.id">
+                {{ categoria.nombre }}
+            </option>
+        </select>
+    </mat-card-content>
+  </mat-card>
