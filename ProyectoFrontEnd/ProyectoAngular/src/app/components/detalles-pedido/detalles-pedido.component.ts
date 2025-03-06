@@ -8,6 +8,8 @@ import { PedidoConDetallesProducto } from '../../Clases/PedidoConDetallesProduct
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { idToken } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalles-pedido',
@@ -21,7 +23,7 @@ export class DetallesPedidoComponent implements OnInit {
   pedidoDetalles: PedidoConDetallesProducto
   existePedido = true
 
-  constructor(private route: ActivatedRoute, private pedidosServicio: PedidosService,) {}
+  constructor(private route: ActivatedRoute, private pedidosServicio: PedidosService, private router: Router) {}
 
   obtenerPedido(){
     //this.pedido = this.pedidosServicio.pedidoId(this.pedidoId)
@@ -38,6 +40,31 @@ export class DetallesPedidoComponent implements OnInit {
             }
           },
         });
+  }
+
+  deletePedido() {
+    if (!confirm("¿Estás seguro de que quieres eliminar este pedido?")) {
+      return; // Si el usuario cancela, no hace nada
+    }
+
+    let borradoCorrectamente: Boolean
+    this.pedidosServicio.deletePedido(this.pedidoId).subscribe({
+      next:(response) =>{ 
+        borradoCorrectamente = response; // Cannot find name 'borradoCorrectamente'
+
+        if (borradoCorrectamente){
+          this.router.navigate(['pedidos']);
+        }
+      },
+      error: (error: HttpErrorResponse) =>{ 
+        if(error.status == 404){
+          alert("No se ha podido borrar, intentalo más tarde")
+        }
+        else {
+          alert("Ha ocurrido un error al obtener los datos del servidor");   
+        }
+      },
+    });
   }
 
   ngOnInit(): void {

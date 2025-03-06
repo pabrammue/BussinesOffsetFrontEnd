@@ -1,22 +1,33 @@
 <div *ngIf="existePedido; then thenBlock else elseBlock"></div>
+
 <ng-template #thenBlock>
     <mat-card class="pedido-card">
       <mat-card-header>
-        <mat-card-title>Detalles del pedido nº: {{ pedidoDetalles.pedido.id }}</mat-card-title>
-        <mat-icon class="editar">delete</mat-icon>
-        <mat-icon class="borrar">edit</mat-icon>
-        <mat-card-subtitle>Proveedor: {{ pedidoDetalles.pedido.nombreProveedor }}</mat-card-subtitle>
+        <mat-card-title>Detalles del pedido nº: {{ pedidoDetalles?.pedido?.id }}</mat-card-title> 
+        <div id="divIconos">
+          <mat-icon class="borrar" (click)="deletePedido()">delete</mat-icon>
+          <mat-icon class="editar">edit</mat-icon>
+        </div>
+        <mat-card-subtitle>Proveedor: {{ pedidoDetalles?.pedido?.nombreProveedor }}</mat-card-subtitle>
       </mat-card-header>
   
       <mat-card-content>
-        <p><strong>Fecha:</strong> {{ pedidoDetalles.pedido.fecha }}</p>
-        <p><strong>Precio total:</strong> {{ pedidoDetalles.pedido.precioTotal | currency }}</p>
+        <p><strong>Fecha:</strong> {{ pedidoDetalles?.pedido?.fecha | date: "dd/MM/YYYY" }}</p>
+        <p><strong>Precio total:</strong> {{ pedidoDetalles?.pedido?.precioTotal | currency }}</p>
   
         <h3>Productos:</h3>
         <mat-list>
-          <mat-list-item *ngFor="let detalle of pedidoDetalles?.listaProductos">
-            <mat-icon matListIcon>shopping_cart</mat-icon>
-            <span>Producto ID: {{ detalle.idProducto }}</span>
+          <mat-list-item *ngFor="let detalle of pedidoDetalles?.listaProductos" class="list-item">
+        
+            <div class="product-details">
+              <mat-icon matListIcon color="primary">shopping_cart</mat-icon>
+              <strong>{{ detalle?.nombreProducto }}</strong> |
+              <span>Cantidad: <strong>{{ detalle?.cantidad }}</strong></span> |
+              <span>Precio unidad: <strong>{{ detalle?.precioUnidad | currency }}</strong></span> |
+              <span>Total: <strong>{{ detalle?.precioTotal | currency }}</strong></span>
+            </div>
+        
+            <mat-divider></mat-divider>
           </mat-list-item>
         </mat-list>
       </mat-card-content>

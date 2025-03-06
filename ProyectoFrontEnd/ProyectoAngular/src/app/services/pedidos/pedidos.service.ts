@@ -10,7 +10,6 @@ import { PedidosConProductosYProveedores } from '../../Clases/pedidos-con-produc
 })
 export class PedidosService {
   urlApi="http://localhost:5030/api/pedido";
-
   constructor() { }
   http = inject(HttpClient); //esto hace que nada del html se vea
 
@@ -62,5 +61,9 @@ export class PedidosService {
 
   getPedidoDetalles(id): Observable<PedidoConDetallesProducto>{
     return this.http.get<PedidoConDetallesProducto>(this.urlApi + "/" + id);
+  }
+
+  deletePedido(id): Observable<boolean>{
+    return this.http.delete<boolean>(this.urlApi + "/" + id)
   }
 }
