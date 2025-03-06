@@ -2,7 +2,7 @@
 
 // Estilos generales
 .app-container {
-  height: 100vh;
+  height: 91vh;
   display: flex;
   background-color: #f4f4f4;
 }
@@ -13,17 +13,37 @@
   background-color: #4CAF50;
   color: white;
   padding-top: 20px;
+  border-radius: 0;
 
   mat-nav-list {
-    a {
-      color: white;
-      text-decoration: none;
+    .sidenav-button {
+      display: flex;
+      align-items: center; // Centra verticalmente el ícono y el texto
+      background-color: white; // Fondo blanco como en la imagen
+      color: black; // Texto negro
       font-weight: 500;
       font-size: 1.1rem;
-      padding: 12px 20px;
-      display: block;
+      padding: 10px 15px;
+      margin: 10px 10px; // Espaciado entre botones
+      width: calc(100% - 20px); // Ocupa casi todo el ancho con márgenes
+      border-radius: 10px; // Bordes redondeados como en la imagen
+      transition: all 0.3s ease; // Transición suave para hover
+
+      mat-icon {
+        margin-right: 10px; // Espacio entre el ícono y el texto
+        color: #1B5E20; // Ícono en verde oscuro para que coincida con el borde
+      }
+
+      span {
+        flex-grow: 1; // Hace que el texto ocupe el espacio disponible
+      }
+
       &:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background-color: #e8f5e9; // Verde muy claro al pasar el mouse
+      }
+
+      &:active {
+        background-color: #c8e6c9; // Verde más oscuro al hacer clic
       }
     }
   }
@@ -34,15 +54,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  //padding: 15px;
   background: linear-gradient(135deg, #388E3C, #1B5E20);
   color: white;
   position: relative;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  height: 90px;
+  height: 9vh;
 
   .logo {
-    // height: 90px;
     width: 70px;
     position: absolute;
     left: 0px;
@@ -60,35 +78,3 @@
   }
 }
 
-// Contenido principal
-.contenido {
-  width: 75vw;
-  padding: 25px;
-  flex-grow: 1;
-  background: white;
-  border-radius: 8px;
-  margin: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-/*.contenido {
-  width: 90vw;
-  height: 90vh; // Alto fijo
-  padding: 25px;
-  background: white;
-  border-radius: 8px;
-  margin: auto; // Centra el div horizontalmente dentro de su contenedor
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  //display: flex; 
-  justify-content: center; 
-  align-items: center;
-}*/
-
-// Personalización de mat-toolbar
-mat-toolbar {
-  @include mat.toolbar-overrides((
-    container-background-color: #4CAF50,
-    container-text-color: white,
-  ));
-}

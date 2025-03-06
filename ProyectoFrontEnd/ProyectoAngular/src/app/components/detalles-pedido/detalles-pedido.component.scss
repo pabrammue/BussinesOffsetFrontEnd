@@ -1,0 +1,94 @@
+@use '@angular/material' as mat;
+
+// Estilo para el mat-card (Detalles del pedido)
+.pedido-card {
+  width: 1728px; // Limita el ancho para que no se extienda demasiado
+  margin: 20px 0 20px 20px; // Margen superior, derecha, inferior e izquierdo (alineado a la izquierda)
+  padding: 20px;
+  background-color: #ffffff; // Fondo blanco
+  border-radius: 12px; // Bordes redondeados
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Sombra suave
+  border-left: 5px solid #4CAF50; // Borde izquierdo verde para destacar
+
+  // Estilo para el header del card
+  mat-card-header {
+    border-bottom: 1px solid #e0e0e0; // Línea separadora sutil
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    mat-card-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1B5E20; // Verde oscuro para el título
+    }
+
+    mat-card-subtitle {
+      font-size: 1.2rem;
+      color: #666; // Gris para el subtítulo
+      font-style: italic;
+    }
+  }
+
+  // Estilo para el contenido del card
+  mat-card-content {
+    p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      color: #333; // Texto oscuro para mejor legibilidad
+
+      strong {
+        color: #388E3C; // Verde medio para resaltar etiquetas
+        margin-right: 5px;
+      }
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1B5E20; // Verde oscuro para el título de productos
+      margin: 20px 0 10px;
+      border-bottom: 2px solid #4CAF50; // Línea verde debajo del título
+      padding-bottom: 5px;
+      display: inline-block;
+    }
+
+    // Estilo para la lista de productos
+    mat-list {
+      mat-list-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0; // Separador entre ítems
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e8f5e9; // Fondo verde claro al pasar el mouse
+        }
+
+        mat-icon {
+          color: #4CAF50; // Ícono verde
+          margin-right: 15px;
+        }
+
+        span {
+          font-size: 1rem;
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+// Estilo para el mensaje de error (elseBlock)
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d32f2f; // Rojo para el mensaje de error
+  margin: 50px 0 50px 20px; // Margen superior, derecha, inferior e izquierdo (alineado a la izquierda)
+  padding: 20px;
+  background-color: #ffebee; // Fondo rojo claro
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px; // Limita el ancho
+}

@@ -1,39 +1,44 @@
-<h1 *ngIf="datosEncontrados; then thenBlock else elseBlock">Pedidos a proveedores</h1>
-<button mat-raised-button id="btn">Nuevo</button>
+<div class="contenido">
+  <h1>Listado de Pedidos</h1>
+  <button mat-raised-button class="btn">Nuevo</button>
+  <h1 *ngIf="datosEncontrados; then thenBlock else elseBlock">Pedidos a proveedores</h1>
 
-<ng-template #thenBlock>
-  <table mat-table [dataSource]="listadoPedidos" class="mat-elevation-z8"> 
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Número de pedido </th>
-        <td mat-cell *matCellDef="let pedido"> {{pedido.id}} </td>
-      </ng-container>
 
-    <ng-container matColumnDef="nombreProveedor">
-      <th mat-header-cell *matHeaderCellDef> Proveedor </th>
-      <td mat-cell *matCellDef="let pedido"> {{pedido.nombreProveedor}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="fecha">
-        <th mat-header-cell *matHeaderCellDef> Fecha </th>
-        <td mat-cell *matCellDef="let pedido"> {{pedido.fecha | date: "dd/MM/YYYY"}} </td>
-    </ng-container>
-    
-    <ng-container matColumnDef="precioTotal">
-        <th mat-header-cell *matHeaderCellDef> Precio Total </th>
-        <td mat-cell *matCellDef="let pedido"> {{pedido.precioTotal}} </td>
-    </ng-container>
+    <ng-template #thenBlock>
+      <table mat-table [dataSource]="listadoPedidos" class="mat-elevation-z8"> 
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Número de pedido </th>
+            <td mat-cell *matCellDef="let pedido"> {{pedido.id}} </td>
+          </ng-container>
 
-    <ng-container matColumnDef="precioBruto">
-        <th mat-header-cell *matHeaderCellDef> Precio Bruto </th>
-        <td mat-cell *matCellDef="let pedido"> {{pedido.precioBruto}} </td>
-    </ng-container>
+        <ng-container matColumnDef="nombreProveedor">
+          <th mat-header-cell *matHeaderCellDef> Proveedor </th>
+          <td mat-cell *matCellDef="let pedido"> {{pedido.nombreProveedor}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let pedido"> {{pedido.fecha | date: "dd/MM/YYYY"}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="precioTotal">
+            <th mat-header-cell *matHeaderCellDef> Precio Total </th>
+            <td mat-cell *matCellDef="let pedido"> {{pedido.precioTotal}} </td>
+        </ng-container>
 
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let pedido; columns: displayedColumns;" (click)="abrirDetallesPedido(pedido.id)" id="row"></tr>
-  </table>
-</ng-template>
+        <ng-container matColumnDef="precioBruto">
+            <th mat-header-cell *matHeaderCellDef> Precio Bruto </th>
+            <td mat-cell *matCellDef="let pedido"> {{pedido.precioBruto}} </td>
+        </ng-container>
 
-<ng-template #elseBlock>
-  <h1>No se encuentran datos disponibles</h1>
-</ng-template>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let pedido; columns: displayedColumns;" (click)="abrirDetallesPedido(pedido.id)" id="row"></tr>
+      </table>
+    </ng-template>
+
+
+  <ng-template #elseBlock>
+    <h1>No se encuentran datos disponibles</h1>
+  </ng-template>
+</div>
