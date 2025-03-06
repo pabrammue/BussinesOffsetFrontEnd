@@ -4,28 +4,30 @@
       <img src="Logo1Solo.png" alt="Logo" class="logo">
     </a>
   </div>
+  <img src="fondo.jpg" class="background-image">
   <span class="titulo">Bussiness Offset</span>
-</mat-toolbar>
+</mat-toolbar>  
 
 <mat-sidenav-container class="app-container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <img src="fondo.jpg" class="background-image">
     <mat-nav-list>
       <button mat-button routerLink="pedidos" class="sidenav-button">
-        <mat-icon>language</mat-icon> <!-- Ícono de globo terráqueo -->
+        <mat-icon>language</mat-icon>
         <span>Pedidos</span>
       </button>
       <button mat-button routerLink="construccion" class="sidenav-button">
-        <mat-icon>web</mat-icon> <!-- Ícono diferente para cada botón -->
+        <mat-icon>web</mat-icon>
         <span>Página 2</span>
       </button>
       <button mat-button routerLink="construccion" class="sidenav-button">
-        <mat-icon>build</mat-icon> <!-- Ícono diferente para cada botón -->
+        <mat-icon>build</mat-icon>
         <span>Página 3</span>
       </button>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

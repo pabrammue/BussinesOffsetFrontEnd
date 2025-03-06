@@ -5,17 +5,36 @@
   height: 91vh;
   display: flex;
   background-color: #f4f4f4;
+  margin: 0; // Elimina márgenes externos
+  padding: 0; // Elimina paddings externos
 }
+
+
 
 // Sidebar
 .sidenav {
   width: 150px;
   background-color: #4CAF50;
   color: white;
-  padding-top: 20px;
+  padding-top: 10px;
   border-radius: 0;
+  overflow: hidden; // Evita que la imagen desborde
+
+  .background-image {
+    position: absolute; // La imagen se posiciona como fondo
+    top: 0;
+    left: 0;
+    width: 100%; // Cubre todo el ancho
+    height: 100%; // Cubre toda la altura
+    object-fit: cover; // Ajusta la imagen para que cubra el área
+    z-index: 0; // Coloca la imagen detrás de los otros elementos
+    opacity: 0.5; // Opcional: reduce la opacidad para que el color de fondo sea visible
+  }
 
   mat-nav-list {
+    position: relative; // Asegura que la lista esté por encima de la imagen
+    z-index: 1; // Mayor que el de la imagen
+
     .sidenav-button {
       display: flex;
       align-items: center; // Centra verticalmente el ícono y el texto
@@ -23,8 +42,8 @@
       color: black; // Texto negro
       font-weight: 500;
       font-size: 1.1rem;
-      padding: 10px 15px;
-      margin: 10px 10px; // Espaciado entre botones
+      padding: 20px 15px;
+      margin: 20px 10px; // Espaciado entre botones
       width: calc(100% - 20px); // Ocupa casi todo el ancho con márgenes
       border-radius: 10px; // Bordes redondeados como en la imagen
       transition: all 0.3s ease; // Transición suave para hover
@@ -56,9 +75,21 @@
   justify-content: center;
   background: linear-gradient(135deg, #388E3C, #1B5E20);
   color: white;
-  position: relative;
+  position: relative; // Necesario para el posicionamiento absoluto de la imagen
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   height: 9vh;
+  overflow: hidden; // Evita que la imagen desborde
+
+  .background-image {
+    position: absolute; // La imagen se posiciona como fondo
+    top: 0;
+    left: 0;
+    width: 100%; // Cubre todo el ancho
+    height: 100%; // Cubre toda la altura
+    object-fit: cover; // Ajusta la imagen para que cubra el área
+    z-index: 0; // Coloca la imagen detrás de los otros elementos
+    opacity: 0.5; // Opcional: reduce la opacidad para que el gradiente sea visible
+  }
 
   .logo {
     width: 70px;
@@ -70,11 +101,15 @@
     padding-right: 40px;
     padding-top: 5px;
     padding-bottom: 5px;
+    z-index: 1; // Asegura que el logo esté por encima de la imagen
   }
 
   .titulo {
     font-size: 1.8rem;
     font-weight: bold;
+    position: relative; // Asegura que el texto esté por encima de la imagen
+    z-index: 1; // Mayor que el de la imagen
   }
-}
 
+
+}
