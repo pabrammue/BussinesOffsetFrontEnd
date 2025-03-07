@@ -48,3 +48,91 @@
       }
     }
   }
+
+
+mat-select.selectCrear {
+    width: auto;  
+    max-width: 300px;  
+    min-width: 200px;  
+  }
+
+  mat-card-header {
+    border-bottom: 1px solid #e0e0e0; // Línea separadora sutil
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    mat-card-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1B5E20; // Verde oscuro para el título
+    }
+
+    mat-card-subtitle {
+      font-size: 1.2rem;
+      color: #666; // Gris para el subtítulo
+      font-style: italic;
+    }
+}
+
+mat-card-content {
+    p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      color: #333; // Texto oscuro para mejor legibilidad
+
+      strong {
+        color: #388E3C; // Verde medio para resaltar etiquetas
+        margin-right: 5px;
+      }
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1B5E20; // Verde oscuro para el título de productos
+      margin: 20px 0 10px;
+      border-bottom: 2px solid #4CAF50; // Línea verde debajo del título
+      padding-bottom: 5px;
+    }
+
+    // Estilo para la lista de productos
+    mat-list-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0; // Separador entre productos
+      font-size: 1rem;
+      
+      .producto-detalle {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        
+        span {
+          flex: 1;
+          padding: 0 5px;
+          text-align: left;
+        }
+        
+        .precio {
+          color: #388e3c;
+          font-weight: bold;
+        }
+        
+        .cantidad {
+          color: #1976d2;
+          font-weight: bold;
+        }
+        
+        .precio-total {
+          color: #e64a19;
+          font-weight: bold;
+        }
+      }
+  }
+}
+
+.divEspacio {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

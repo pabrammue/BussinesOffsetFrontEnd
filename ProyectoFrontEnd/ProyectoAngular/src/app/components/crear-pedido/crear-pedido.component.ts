@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MatCardModule, MatCardXlImage} from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { PedidoConDetallesProducto } from '../../Clases/PedidoConDetallesProducto';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,10 +17,12 @@ import { ProductosService } from '../../services/productos/productos.service';
 import { DetallesPedidos } from '../../Clases/detalles-pedido';
 import { Pedido } from '../../Clases/pedido';
 import { PedidosService } from '../../services/pedidos/pedidos.service';
+import {MatSelectModule} from '@angular/material/select';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-crear-pedido',
-  imports: [MatCardModule, CommonModule, MatListModule, MatIconModule, FormsModule],
+  imports: [MatCardModule, CommonModule, MatListModule, MatIconModule, FormsModule, MatButton, MatSelectModule, MatIconButton],
   templateUrl: './crear-pedido.component.html',
   styleUrl: './crear-pedido.component.scss'
 })
@@ -75,7 +78,19 @@ export class CrearPedidoComponent implements OnInit{
 
   obtenerProductos():void{
     if (this.categoriaSeleccionada == null || this.categoriaSeleccionada.idCategorias == 0){
-      alert("NO DISPONIBLE PRODUCTOS PROVEEDOR")
+      this.productosService.getProductosProveedor(this.proveedorSeleccionado.idProveedores).subscribe({
+        next:(response) =>{ 
+          this.listaProductos = response;
+        },
+        error: (error: HttpErrorResponse) =>{ 
+          if(error.status == 404){
+            //TODO hacer algo
+          }
+          else {
+            alert("Ha ocurrido un error al obtener los datos del servidor");   
+          }
+        },
+      });
     }
     else{
       this.productosService.getProductoProveedoresCategoria(this.proveedorSeleccionado.idProveedores, this.categoriaSeleccionada.idCategorias).subscribe({
@@ -131,6 +146,7 @@ export class CrearPedidoComponent implements OnInit{
   }
 
   onProveedorChange(): void {
+    console.log(this.proveedorSeleccionado)
     this.obtenerCategoriasProveedor();
     this.obtenerProductos()
   }

@@ -1,30 +1,32 @@
 <mat-card class="pedido-card">
     <mat-card-header>
-      <mat-card-title>CREAR UN NUEVO PEDIDO</mat-card-title> 
-      <mat-card-subtitle>Subtitulo</mat-card-subtitle>
-      <button mat-raised-button class="btn" (click)="crearPedido()">Nuevo</button>
+        <mat-card-title>CREAR UN NUEVO PEDIDO</mat-card-title> 
+        <mat-card-subtitle>Seleccione los detalles para crear un pedido</mat-card-subtitle>
+        <button mat-raised-button class="btn" (click)="crearPedido()">Crear Pedido</button>
     </mat-card-header>
 
     <mat-card-content>
+        <!-- Selección de Proveedor -->
         <h3>Selecciona un proveedor</h3>
-        <select name="selectProveedores" id="selectProveedores" [(ngModel)]="proveedorSeleccionado" (change)="onProveedorChange()">
-            <option *ngFor="let proveedor of listaProveedores" [ngValue]="proveedor">
+        <mat-select name="selectProveedores" id="selectProveedores" [(ngModel)]="proveedorSeleccionado" (selectionChange)="onProveedorChange()" class="selectCrear">
+            <mat-option *ngFor="let proveedor of listaProveedores" [value]="proveedor">
                 {{ proveedor.nombre }}
-            </option>
-        </select>
+            </mat-option>
+        </mat-select>
 
-        <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }">
-            <h3>Categorias</h3>
-            <select name="selectCategorias" id="selectCategorias" [(ngModel)]="categoriaSeleccionada" (change)="onCategoriaChange()">
-                <option *ngFor="let categoria of listaCategoriasProveedor" [ngValue]="categoria">
+        <!-- Selección de Categorías de Proveedor -->
+        <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }" class="divEspacio">
+            <h3>Categorías</h3>
+            <mat-select name="selectCategorias" id="selectCategorias" [(ngModel)]="categoriaSeleccionada" (selectionChange)="onCategoriaChange()" class="selectCrear">
+                <mat-option *ngFor="let categoria of listaCategoriasProveedor" [value]="categoria">
                     {{ categoria.nombre }}
-                </option>
-            </select>
+                </mat-option>
+            </mat-select>
         </div>
 
-
+        <!-- Selección de Productos -->
         <h3>Productos</h3>
-        <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }" class="Productos">
+        <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }" class="Productos" >
             <mat-card *ngFor="let producto of listaProductos" (click)="addProducto(producto)">
                 <mat-card-content>
                     <mat-icon>shopping_bag</mat-icon>
@@ -34,10 +36,24 @@
             </mat-card>
         </div>
 
-        <div [ngStyle]="{ 'visibility': listaDetallesPedido == null ? 'hidden' : 'visibility' }">
-            <li *ngFor="let producto of listaDetallesPedido">
-                {{producto.nombreProducto}} | PrecioUnidad: {{producto.precioUnidad}} | Cantidad: {{producto.cantidad}} | PrecioTotal: {{producto.precioTotal}}
-            </li>
-        </div>
+        <!-- Detalles del Pedido -->
+        <div *ngIf="listaDetallesPedido.length > 0">
+            <h3>Detalles del Pedido</h3>
+            <mat-list>
+              <mat-list-item *ngFor="let producto of listaDetallesPedido">
+                <div class="producto-detalle">
+                  <span>{{ producto.nombreProducto }}</span>
+                  <span class="precio">Precio Unidad: {{ producto.precioUnidad | currency }}</span>
+                  <span class="cantidad">
+                    Cantidad: {{ producto.cantidad }}
+                    <button mat-icon-button>
+                        <mat-icon>add</mat-icon>
+                    </button>
+                  </span>
+                  <span class="precio-total">Precio Total: {{ producto.precioTotal | currency }}</span>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </div>
     </mat-card-content>
-  </mat-card>
+</mat-card>

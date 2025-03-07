@@ -12,8 +12,8 @@ export class ProductosService {
   constructor() { }
   http = inject(HttpClient); 
 
-  getProveedoresProveedor(): Observable<Producto[]>{
-    return this.http.get<Producto[]>(this.urlApi);
+  getProductosProveedor(idProveedor): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.urlApi + "/" + idProveedor + "/productos");
   }
 
   getProductoProveedoresCategoria(idProveedor, idCategorias):Observable<Producto[]>{
