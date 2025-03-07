@@ -4,4 +4,5 @@ export interface Producto {
     porcentajeIVA:number
     stock:number
     idCategoria:number
+    precioUnitario: number
 }

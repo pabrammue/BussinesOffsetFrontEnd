@@ -12,11 +12,13 @@
             </option>
         </select>
 
-        <h3>Categorias</h3>
-        <select name="selectCategorias" id="selectCategorias">
-            <option *ngFor="let categoria of listaCategoriasProveedor" [value]="categoria.id">
-                {{ categoria.nombre }}
-            </option>
-        </select>
+        <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }">
+            <h3>Categorias</h3>
+            <select name="selectCategorias" id="selectCategorias" [(ngModel)]="categoriaSeleccionada" (change)="onCategoriaChange()">
+                <option *ngFor="let categoria of listaCategoriasProveedor" [ngValue]="categoria">
+                    {{ categoria.nombre }}
+                </option>
+            </select>
+        </div>
     </mat-card-content>
   </mat-card>

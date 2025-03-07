@@ -13,6 +13,7 @@ import { Proveedor } from '../../Clases/proveedor';
 import { ProveedoresService } from '../../services/proveedores/proveedores.service';
 import { Categoria } from '../../Clases/categoria';
 import { FormsModule } from '@angular/forms';
+import { Producto } from '../../Clases/producto';
 
 @Component({
   selector: 'app-crear-pedido',
@@ -22,10 +23,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class CrearPedidoComponent implements OnInit{
   nuevoPedido: PedidoConDetallesProducto
+  categoriasExisten: boolean = false
+
   listaProveedores: Proveedor[]
   listaCategoriasProveedor: Categoria[]
+  listaProductos: Producto[]
 
   proveedorSeleccionado: Proveedor = {idProveedores: 0, email: '', nombre: '', direccion: ''}
+  categoriaSeleccionada: Categoria = {idCategorias: 0, nombre: ''}
 
   constructor(private proveedoresService: ProveedoresService){}
 
@@ -50,6 +55,7 @@ export class CrearPedidoComponent implements OnInit{
     this.proveedoresService.getCategoriasProveedor(this.proveedorSeleccionado.idProveedores).subscribe({
       next:(response) =>{ 
         this.listaCategoriasProveedor = response;
+        this.categoriasExisten = true
       },
       error: (error: HttpErrorResponse) =>{ 
         if(error.status == 404){
@@ -65,6 +71,11 @@ export class CrearPedidoComponent implements OnInit{
   onProveedorChange(): void {
     //alert(this.proveedorSeleccionado.idProveedores)
     this.obtenerCategoriasProveedor();
+  }
+
+  onCategoriaChange(): void {
+    //alert(this.categoriaSeleccionada.idCategorias)
+    //TODO mostrarProductos
   }
 
   ngOnInit(): void {
