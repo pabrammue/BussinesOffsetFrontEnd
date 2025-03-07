@@ -1,9 +1,9 @@
 export interface Pedido {
-    id:number
-    fecha:Date
-    precioTotal:number
-    precioBruto:number
+    id?:number
+    fecha?:Date
+    precioTotal?:number
+    precioBruto?:number
     idProveedor:number
-    aceptado: boolean
+    aceptado?: boolean
     nombreProveedor:string
 }

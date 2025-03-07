@@ -21,6 +21,10 @@ export class PedidosService {
     return this.http.get<PedidoConDetallesProducto>(this.urlApi + "/" + id);
   }
 
+  postPedido(nuevoPedido: PedidoConDetallesProducto): Observable<PedidoConDetallesProducto>{
+    return this.http.post<PedidoConDetallesProducto>(this.urlApi, nuevoPedido);
+  }
+
   deletePedido(id): Observable<boolean>{
     return this.http.delete<boolean>(this.urlApi + "/" + id)
   }

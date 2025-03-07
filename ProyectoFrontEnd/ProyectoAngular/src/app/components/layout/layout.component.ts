@@ -16,7 +16,6 @@ import { MatIconModule } from '@angular/material/icon'; // Ya lo importaste aqu�
     MatListModule,
     MatToolbarModule,
     RouterLink,
-    RouterLinkActive,
     MatIconModule // Añade MatIconModule aquí
   ],
   templateUrl: './layout.component.html',

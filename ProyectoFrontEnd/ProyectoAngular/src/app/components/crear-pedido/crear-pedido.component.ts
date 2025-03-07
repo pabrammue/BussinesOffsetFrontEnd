@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MatCardModule, MatCardXlImage} from '@angular/material/card';
-import { PedidosService } from '../../services/pedidos/pedidos.service';
-import { Pedido } from '../../Clases/pedido';
 import { CommonModule } from '@angular/common';
 import { PedidoConDetallesProducto } from '../../Clases/PedidoConDetallesProducto';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -14,6 +12,10 @@ import { ProveedoresService } from '../../services/proveedores/proveedores.servi
 import { Categoria } from '../../Clases/categoria';
 import { FormsModule } from '@angular/forms';
 import { Producto } from '../../Clases/producto';
+import { ProductosService } from '../../services/productos/productos.service';
+import { DetallesPedidos } from '../../Clases/detalles-pedido';
+import { Pedido } from '../../Clases/pedido';
+import { PedidosService } from '../../services/pedidos/pedidos.service';
 
 @Component({
   selector: 'app-crear-pedido',
@@ -28,11 +30,14 @@ export class CrearPedidoComponent implements OnInit{
   listaProveedores: Proveedor[]
   listaCategoriasProveedor: Categoria[]
   listaProductos: Producto[]
-
+  
   proveedorSeleccionado: Proveedor = {idProveedores: 0, email: '', nombre: '', direccion: ''}
   categoriaSeleccionada: Categoria = {idCategorias: 0, nombre: ''}
+  listaProductosSeleccionados: Producto[] = []
+  listaDetallesPedido : DetallesPedidos[] = []
+  pedidoMandar: PedidoConDetallesProducto
 
-  constructor(private proveedoresService: ProveedoresService){}
+  constructor(private proveedoresService: ProveedoresService, private productosService: ProductosService, private pedidosService: PedidosService, private router: Router){}
 
   obtenerProveedores(): void{
     this.proveedoresService.getProveedores().subscribe({
@@ -68,14 +73,70 @@ export class CrearPedidoComponent implements OnInit{
     });
   }
 
+  obtenerProductos():void{
+    if (this.categoriaSeleccionada == null || this.categoriaSeleccionada.idCategorias == 0){
+      alert("NO DISPONIBLE PRODUCTOS PROVEEDOR")
+    }
+    else{
+      this.productosService.getProductoProveedoresCategoria(this.proveedorSeleccionado.idProveedores, this.categoriaSeleccionada.idCategorias).subscribe({
+        next:(response) =>{ 
+          this.listaProductos = response;
+        },
+        error: (error: HttpErrorResponse) =>{ 
+          if(error.status == 404){
+            //TODO hacer algo
+          }
+          else {
+            alert("Ha ocurrido un error al obtener los datos del servidor");   
+          }
+        },
+      });
+    }
+  }
+
+  addProducto(producto):void{
+    let nuevoP: DetallesPedidos = {idProducto: producto.idProducto, cantidad: 1, nombreProducto: producto.nombre, 
+                                    precioUnidad: producto.precioUnitario, precioTotal: producto.precioUnitario}
+    console.log(nuevoP)
+    let p = this.listaDetallesPedido.find(x => x.idProducto === producto.idProducto)
+
+    if (p == null){
+      this.listaDetallesPedido.push(nuevoP)
+    }
+    else{
+      p.cantidad++;
+      p.precioTotal += p.precioUnidad
+    }
+  }
+
+  crearPedido(): void{
+    let pedido: Pedido = {nombreProveedor: this.proveedorSeleccionado.nombre, idProveedor: this.proveedorSeleccionado.idProveedores}
+    this.pedidoMandar = {pedido: pedido, listaProductos: this.listaDetallesPedido}
+
+    this.pedidosService.postPedido(this.pedidoMandar).subscribe({
+      next:(response) =>{ 
+        let pedidoCreado = response;
+        alert("Pedido creado correctamente")
+        this.router.navigate(['pedidos']);
+      },
+      error: (error: HttpErrorResponse) =>{ 
+        if(error.status == 404){
+          //TODO hacer algo
+        }
+        else {
+          alert("Ha ocurrido un error al obtener los datos del servidor");   
+        }
+      },
+    });
+  }
+
   onProveedorChange(): void {
-    //alert(this.proveedorSeleccionado.idProveedores)
     this.obtenerCategoriasProveedor();
+    this.obtenerProductos()
   }
 
   onCategoriaChange(): void {
-    //alert(this.categoriaSeleccionada.idCategorias)
-    //TODO mostrarProductos
+    this.obtenerProductos()
   }
 
   ngOnInit(): void {

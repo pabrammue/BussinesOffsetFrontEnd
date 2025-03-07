@@ -2,6 +2,7 @@
     <mat-card-header>
       <mat-card-title>CREAR UN NUEVO PEDIDO</mat-card-title> 
       <mat-card-subtitle>Subtitulo</mat-card-subtitle>
+      <button mat-raised-button class="btn" (click)="crearPedido()">Nuevo</button>
     </mat-card-header>
 
     <mat-card-content>
@@ -19,6 +20,24 @@
                     {{ categoria.nombre }}
                 </option>
             </select>
+        </div>
+
+
+        <h3>Productos</h3>
+        <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }" class="Productos">
+            <mat-card *ngFor="let producto of listaProductos" (click)="addProducto(producto)">
+                <mat-card-content>
+                    <mat-icon>shopping_bag</mat-icon>
+                    <div class="producto-nombre">{{ producto.nombre }}</div>
+                    <div class="producto-precio">{{ producto.precioUnitario | currency }}</div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div [ngStyle]="{ 'visibility': listaDetallesPedido == null ? 'hidden' : 'visibility' }">
+            <li *ngFor="let producto of listaDetallesPedido">
+                {{producto.nombreProducto}} | PrecioUnidad: {{producto.precioUnidad}} | Cantidad: {{producto.cantidad}} | PrecioTotal: {{producto.precioTotal}}
+            </li>
         </div>
     </mat-card-content>
   </mat-card>
