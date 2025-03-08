@@ -32,8 +32,8 @@
       }
   
       mat-icon {
-        font-size: 40px;
-        color: #1976d2;
+        font-size: 25px;
+        color: #007c48;
       }
   
       .producto-nombre {
@@ -135,4 +135,29 @@ mat-card-content {
 .divEspacio {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.borrar {
+  cursor: pointer;
+  transition: color 0.3s ease; /* Animación suave */
+}
+
+.borrar:hover {
+  color: red; /* Cambia el color al pasar el ratón */
+}
+
+
+// Estilos específicos para la fila de encabezados
+.encabezado {
+  font-weight: bold;
+  background-color: #ecffe8;
+  border-bottom: 2px solid #c0c0c0;
+  padding: 16px;
+
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr 1.3fr; // Ajusta los tamaños de las columnas
+  gap: 16px;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
 }

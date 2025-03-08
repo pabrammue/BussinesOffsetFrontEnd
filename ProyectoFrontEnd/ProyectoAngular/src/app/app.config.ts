@@ -11,6 +11,13 @@ import { provideAuth } from '@angular/fire/auth'; // Si necesitas autenticación
 import { getAuth } from 'firebase/auth';
 import {firebase} from '../environments/environments';
 
+import { LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+// ✅ Registra el idioma español
+registerLocaleData(localeEs);
+
 const firebaseConfig = {
   apiKey: firebase.apiKey,
   authDomain: firebase.authDomain,
@@ -28,7 +35,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideAuth(()=> getAuth())
+    provideAuth(()=> getAuth()),
+    { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
 
 };

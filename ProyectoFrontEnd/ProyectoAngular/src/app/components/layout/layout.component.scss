@@ -37,32 +37,40 @@
 
     .sidenav-button {
       display: flex;
-      align-items: center; // Centra verticalmente el ícono y el texto
-      background-color: white; // Fondo blanco como en la imagen
-      color: black; // Texto negro
+      align-items: center;
+      justify-content: flex-start; // Asegura que el contenido esté alineado a la izquierda
+      background-color: white;
+      color: black;
       font-weight: 500;
       font-size: 1.1rem;
-      padding: 20px 15px;
-      margin: 20px 10px; // Espaciado entre botones
-      width: calc(100% - 20px); // Ocupa casi todo el ancho con márgenes
-      border-radius: 10px; // Bordes redondeados como en la imagen
-      transition: all 0.3s ease; // Transición suave para hover
-
+      padding: 10px;
+      margin: 10px;
+      width: calc(100% - 20px);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      text-align: left;
+      min-height: 60px; 
+      white-space: normal; // Permite múltiples líneas
+      word-break: break-word; // Divide el texto en palabras largas
+      overflow: hidden; // Evita que el contenido sobresalga
+    
       mat-icon {
-        margin-right: 10px; // Espacio entre el ícono y el texto
-        color: #1B5E20; // Ícono en verde oscuro para que coincida con el borde
+        flex-shrink: 0; // Evita que el icono cambie de tamaño
+        margin-right: 10px;
+        color: #1B5E20;
       }
-
+    
       span {
-        flex-grow: 1; // Hace que el texto ocupe el espacio disponible
+        flex-grow: 1; // Hace que el texto ocupe el espacio restante
+        display: block; // Permite que el texto ocupe múltiples líneas
       }
-
+    
       &:hover {
-        background-color: #e8f5e9; // Verde muy claro al pasar el mouse
+        background-color: #e8f5e9;
       }
-
+    
       &:active {
-        background-color: #c8e6c9; // Verde más oscuro al hacer clic
+        background-color: #c8e6c9;
       }
     }
   }

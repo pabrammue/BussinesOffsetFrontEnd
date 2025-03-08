@@ -18,3 +18,42 @@
 .btn {
   margin-bottom: 20px;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0px 4px 10px rgba(76, 247, 113, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: linear-gradient(45deg, #3f51b5, #2196f3);
+  color: rgb(6, 75, 0);
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 3px solid #008648;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #004623;
+}
+
+
+.mat-elevation-z8 {
+  border-radius: 10px;
+}
+
+.header {
+  position: sticky;
+  top: 0; // Lo fija en la parte superior
+  z-index: 1000; // Asegura que esté sobre otros elementos
+  background: white; // Evita transparencia al hacer scroll
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

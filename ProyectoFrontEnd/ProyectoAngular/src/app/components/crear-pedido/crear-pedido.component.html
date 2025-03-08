@@ -2,36 +2,35 @@
     <mat-card-header>
         <mat-card-title>CREAR UN NUEVO PEDIDO</mat-card-title> 
         <mat-card-subtitle>Seleccione los detalles para crear un pedido</mat-card-subtitle>
-        <button mat-raised-button class="btn" (click)="crearPedido()">Crear Pedido</button>
+        <button mat-raised-button class="btn" (click)="crearPedido()" [disabled]="!listaDetallesPedido.length || !proveedorSeleccionado">Crear Pedido</button>
     </mat-card-header>
 
     <mat-card-content>
         <!-- Selección de Proveedor -->
         <h3>Selecciona un proveedor</h3>
-        <mat-select name="selectProveedores" id="selectProveedores" [(ngModel)]="proveedorSeleccionado" (selectionChange)="onProveedorChange()" class="selectCrear">
+        <mat-select name="selectProveedores" id="selectProveedores" [(ngModel)]="proveedorSeleccionado" 
+        (selectionChange)="onProveedorChange()" class="selectCrear">
             <mat-option *ngFor="let proveedor of listaProveedores" [value]="proveedor">
                 {{ proveedor.nombre }}
             </mat-option>
         </mat-select>
 
-        <!-- Selección de Categorías de Proveedor -->
+        <!-- Selección de Productos -->
         <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }" class="divEspacio">
-            <h3>Categorías</h3>
+            <h3>Productos</h3>
+            <h4>Filtrar por categorías</h4>
             <mat-select name="selectCategorias" id="selectCategorias" [(ngModel)]="categoriaSeleccionada" (selectionChange)="onCategoriaChange()" class="selectCrear">
                 <mat-option *ngFor="let categoria of listaCategoriasProveedor" [value]="categoria">
                     {{ categoria.nombre }}
                 </mat-option>
             </mat-select>
         </div>
-
-        <!-- Selección de Productos -->
-        <h3>Productos</h3>
         <div [ngStyle]="{ 'visibility': categoriasExisten ? 'visible' : 'hidden' }" class="Productos" >
             <mat-card *ngFor="let producto of listaProductos" (click)="addProducto(producto)">
                 <mat-card-content>
                     <mat-icon>shopping_bag</mat-icon>
                     <div class="producto-nombre">{{ producto.nombre }}</div>
-                    <div class="producto-precio">{{ producto.precioUnitario | currency }}</div>
+                    <div class="producto-precio">{{ producto.precioUnitario | currency:'EUR' }}</div>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -39,18 +38,33 @@
         <!-- Detalles del Pedido -->
         <div *ngIf="listaDetallesPedido.length > 0">
             <h3>Detalles del Pedido</h3>
+
+            <div class="producto-detalle encabezado">
+                <span>Producto</span>
+                <span class="precio">Precio unidad</span>
+                <span class="cantidad">Cantidad</span>
+                <span class="precio-total">Precio Total</span>
+              </div>
+
+
             <mat-list>
               <mat-list-item *ngFor="let producto of listaDetallesPedido">
                 <div class="producto-detalle">
                   <span>{{ producto.nombreProducto }}</span>
-                  <span class="precio">Precio Unidad: {{ producto.precioUnidad | currency }}</span>
+                  <span class="precio">{{ producto.precioUnidad | currency:'EUR' }}</span>
                   <span class="cantidad">
-                    Cantidad: {{ producto.cantidad }}
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="removeCantidadProducto(producto)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                        {{ producto.cantidad }}
+                    <button mat-icon-button (click)="addCantidadProducto(producto)">
                         <mat-icon>add</mat-icon>
                     </button>
                   </span>
-                  <span class="precio-total">Precio Total: {{ producto.precioTotal | currency }}</span>
+                  <span class="precio-total">{{ producto.precioTotal | currency:'EUR' }}</span>
+                  <button mat-icon-button class="borrar" (click)="eliminarProducto(producto)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </div>
               </mat-list-item>
             </mat-list>
