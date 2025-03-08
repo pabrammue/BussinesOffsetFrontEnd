@@ -12,7 +12,7 @@
   
       <mat-card-content>
         <p><strong>Fecha:</strong> {{ pedidoDetalles?.pedido?.fecha | date: "dd/MM/YYYY" }}</p>
-        <p><strong>Precio total:</strong> {{ pedidoDetalles?.pedido?.precioTotal | currency }}</p>
+        <p><strong>Precio total:</strong> {{ pedidoDetalles?.pedido?.precioTotal | currency:'EUR' }}</p>
   
         <h3>Productos:</h3>
         <mat-list>
@@ -22,8 +22,8 @@
               <mat-icon matListIcon color="primary">shopping_cart</mat-icon>
               <strong>{{ detalle?.nombreProducto }}</strong> |
               <span>Cantidad: <strong>{{ detalle?.cantidad }}</strong></span> |
-              <span>Precio unidad: <strong>{{ detalle?.precioUnidad | currency }}</strong></span> |
-              <span>Total: <strong>{{ detalle?.precioTotal | currency }}</strong></span>
+              <span>Precio unidad: <strong>{{ detalle?.precioUnidad | currency:'EUR' }}</strong></span> |
+              <span>Total: <strong>{{ detalle?.precioTotal | currency:'EUR' }}</strong></span>
             </div>
         
             <mat-divider></mat-divider>

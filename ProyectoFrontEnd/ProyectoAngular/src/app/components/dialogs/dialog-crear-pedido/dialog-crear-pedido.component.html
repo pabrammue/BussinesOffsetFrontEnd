@@ -1,0 +1,29 @@
+<div class="Contenedor">
+  <div mat-dialog-content>
+    <h1 class="titulo">Nuevo pedido a: {{pedidoMandar.pedido.nombreProveedor}}</h1>
+    <h1 class="precioFinal"> Precio total: {{precioTotal | currency:'EUR' }}</h1> 
+    <div class="producto-detalle encabezado">
+      <span>Producto</span>
+      <span class="precio">Precio unidad</span>
+      <span class="cantidad">Cantidad</span>
+      <span class="precio-total">Precio Total</span>
+    </div>
+    <mat-list>
+       <mat-list-item *ngFor="let producto of pedidoMandar.listaProductos">
+       <div class="producto-detalle">
+        <span>{{ producto.nombreProducto }}</span>
+        <span>{{ producto.precioUnidad | currency:'EUR' }}</span>
+        <span>
+              {{ producto.cantidad }}
+        </span>
+        <span>{{ producto.precioTotal | currency:'EUR' }}</span>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="crearPedido()">Realizar pedido</button>
+    <button mat-button (click)="dialog.close()">Cancelar</button>
+</div>
+</div>

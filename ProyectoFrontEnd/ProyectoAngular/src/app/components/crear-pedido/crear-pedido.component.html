@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title>CREAR UN NUEVO PEDIDO</mat-card-title> 
         <mat-card-subtitle>Seleccione los detalles para crear un pedido</mat-card-subtitle>
-        <button mat-raised-button class="btn" (click)="crearPedido()" [disabled]="!listaDetallesPedido.length || !proveedorSeleccionado">Crear Pedido</button>
+        <button mat-raised-button class="btn" (click)="abrirConfirmarPedido()" [disabled]="!listaDetallesPedido.length || !proveedorSeleccionado">Crear Pedido</button>
     </mat-card-header>
 
     <mat-card-content>
@@ -51,7 +51,7 @@
               <mat-list-item *ngFor="let producto of listaDetallesPedido">
                 <div class="producto-detalle">
                   <span>{{ producto.nombreProducto }}</span>
-                  <span class="precio">{{ producto.precioUnidad | currency:'EUR' }}</span>
+                  <span class="valor">{{ producto.precioUnidad | currency:'EUR' }}</span>
                   <span class="cantidad">
                     <button mat-icon-button (click)="removeCantidadProducto(producto)">
                         <mat-icon>remove</mat-icon>
@@ -61,7 +61,7 @@
                         <mat-icon>add</mat-icon>
                     </button>
                   </span>
-                  <span class="precio-total">{{ producto.precioTotal | currency:'EUR' }}</span>
+                  <span class="valor">{{ producto.precioTotal | currency:'EUR' }}</span>
                   <button mat-icon-button class="borrar" (click)="eliminarProducto(producto)">
                     <mat-icon>delete</mat-icon>
                   </button>

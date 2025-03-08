@@ -1,3 +1,12 @@
+@use '@angular/material' as mat;
+
+mat-select{
+  @include mat.select-overrides((
+    enabled-trigger-text-color: rgb(83, 83, 83),
+    enabled-arrow-color: green
+  ));
+}
+
 .pedido-card {
     width: 1728px;
     margin: 20px 0 20px 20px; 
@@ -113,19 +122,13 @@ mat-card-content {
           padding: 0 5px;
           text-align: left;
         }
-        
-        .precio {
+
+        .valor{
           color: #388e3c;
           font-weight: bold;
         }
-        
-        .cantidad {
-          color: #1976d2;
-          font-weight: bold;
-        }
-        
-        .precio-total {
-          color: #e64a19;
+
+        .cantidad{
           font-weight: bold;
         }
       }
@@ -160,4 +163,10 @@ mat-card-content {
   align-items: center;
   padding: 12px;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.btn{
+  margin-left: auto;
+  background-color: #00420b;
+  color: #ffffff;
 }

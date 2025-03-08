@@ -1,0 +1,59 @@
+@use '@angular/material' as mat;
+
+.Contenedor{
+    padding: 10px;
+}
+
+.precioFinal{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1B5E20; // Verde oscuro para el título de productos
+    margin: 20px 0 10px;
+    border-bottom: 2px solid #4CAF50; // Línea verde debajo del título
+    padding-bottom: 5px;
+}
+
+.titulo{
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #8b8b8b;
+    margin: 20px 0 10px;
+    padding-bottom: 5px;
+}
+
+    // Estilo para la lista de productos
+    mat-list-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0; // Separador entre productos
+      font-size: 1rem;
+      
+      .producto-detalle {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        
+        span {
+          flex: 1;
+          padding: 0 5px;
+          text-align: left;
+        }
+        
+      }
+  }
+
+.encabezado {
+  font-weight: bold;
+  background-color: #ecffe8;
+  border-bottom: 2px solid #c0c0c0;
+  padding: 16px;
+
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr 1.3fr; // Ajusta los tamaños de las columnas
+  gap: 16px;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}

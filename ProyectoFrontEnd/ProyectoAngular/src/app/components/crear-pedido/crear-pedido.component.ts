@@ -20,6 +20,8 @@ import { PedidosService } from '../../services/pedidos/pedidos.service';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconButton } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCrearPedidoComponent } from '../dialogs/dialog-crear-pedido/dialog-crear-pedido.component';
 
 @Component({
   selector: 'app-crear-pedido',
@@ -41,7 +43,8 @@ export class CrearPedidoComponent implements OnInit{
   listaDetallesPedido : DetallesPedidos[] = []
   pedidoMandar: PedidoConDetallesProducto
 
-  constructor(private proveedoresService: ProveedoresService, private productosService: ProductosService, private pedidosService: PedidosService, private router: Router){}
+  constructor(private proveedoresService: ProveedoresService, private productosService: ProductosService, 
+    private pedidosService: PedidosService, private router: Router, public dialog: MatDialog){}
 
   /**
    * Método que se encarga de hacer una llamada a la api para obtener la lista de proveedores
@@ -198,26 +201,23 @@ export class CrearPedidoComponent implements OnInit{
   }
 
   /**
-   * Método que hace una llamada a la api (post) para crear un nuevo pedido en la base de datos
+   * Método que abre el dialog de confirmacion del pedido
    */
-  crearPedido(): void{
+  abrirConfirmarPedido(){
     let pedido: Pedido = {nombreProveedor: this.proveedorSeleccionado.nombre, idProveedor: this.proveedorSeleccionado.idProveedores}
     this.pedidoMandar = {pedido: pedido, listaProductos: this.listaDetallesPedido}
 
-    this.pedidosService.postPedido(this.pedidoMandar).subscribe({
-      next:(response) =>{ 
-        let pedidoCreado = response;
-        alert("Pedido creado correctamente")
+    let dialogRef = this.dialog.open(DialogCrearPedidoComponent, {
+      panelClass: 'full-width-dialog',
+      height: '800px',
+      width: '1000px',
+      data: this.pedidoMandar
+    });
+
+    dialogRef.afterClosed().subscribe((result) => { //Property 'subscribe' does not exist on type '() => Observable<any>'.
+      if (result == true){ 
         this.router.navigate(['pedidos']);
-      },
-      error: (error: HttpErrorResponse) =>{ 
-        if(error.status == 404){
-          //TODO hacer algo
-        }
-        else {
-          alert("Ha ocurrido un error al obtener los datos del servidor");   
-        }
-      },
+      }
     });
   }
 
