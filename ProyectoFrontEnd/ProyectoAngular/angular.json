@@ -27,7 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
-              "staticwebapp.config.json",
+              "src/staticwebapp.config.json",
               {
                 "glob": "**/*",
                 "input": "public"
