@@ -25,7 +25,7 @@ export class PedidosService {
     return this.http.post<PedidoConDetallesProducto>(this.urlApi, nuevoPedido);
   }
 
-  deletePedido(id): Observable<boolean>{
-    return this.http.delete<boolean>(this.urlApi + "/" + id)
+  cancelarPedido(id): Observable<boolean>{
+    return this.http.patch<boolean>(this.urlApi + "/" + id, {})
   }
 }

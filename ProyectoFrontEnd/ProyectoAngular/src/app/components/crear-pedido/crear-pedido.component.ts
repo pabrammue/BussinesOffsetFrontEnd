@@ -19,13 +19,12 @@ import { Pedido } from '../../Clases/pedido';
 import { PedidosService } from '../../services/pedidos/pedidos.service';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconButton } from '@angular/material/button';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCrearPedidoComponent } from '../dialogs/dialog-crear-pedido/dialog-crear-pedido.component';
 
 @Component({
   selector: 'app-crear-pedido',
-  imports: [MatCardModule, CommonModule, MatListModule, MatIconModule, FormsModule, MatButton, MatSelectModule, MatIconButton, ReactiveFormsModule],
+  imports: [MatCardModule, CommonModule, MatListModule, MatIconModule, FormsModule, MatButton, MatSelectModule, MatIconButton],
   templateUrl: './crear-pedido.component.html',
   styleUrl: './crear-pedido.component.scss'
 })

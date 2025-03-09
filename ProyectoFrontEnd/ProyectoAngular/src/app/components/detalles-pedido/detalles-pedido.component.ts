@@ -10,6 +10,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { idToken } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCancelarPedidoComponent } from '../dialogs/dialog-cancelar-pedido/dialog-cancelar-pedido.component';
 
 @Component({
   selector: 'app-detalles-pedido',
@@ -23,7 +25,7 @@ export class DetallesPedidoComponent implements OnInit {
   pedidoDetalles: PedidoConDetallesProducto
   existePedido = true
 
-  constructor(private route: ActivatedRoute, private pedidosServicio: PedidosService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private pedidosServicio: PedidosService, private router: Router, public dialog: MatDialog) {}
 
   obtenerPedido(){
     //this.pedido = this.pedidosServicio.pedidoId(this.pedidoId)
@@ -42,13 +44,13 @@ export class DetallesPedidoComponent implements OnInit {
         });
   }
 
-  deletePedido() {
+  /*deletePedido() {
     if (!confirm("¿Estás seguro de que quieres eliminar este pedido?")) {
       return; // Si el usuario cancela, no hace nada
     }
 
     let borradoCorrectamente: Boolean
-    this.pedidosServicio.deletePedido(this.pedidoId).subscribe({
+    this.pedidosServicio.cancelarPedido(this.pedidoId).subscribe({
       next:(response) =>{ 
         borradoCorrectamente = response; // Cannot find name 'borradoCorrectamente'
 
@@ -65,6 +67,21 @@ export class DetallesPedidoComponent implements OnInit {
         }
       },
     });
+  }*/
+
+  abrirDialogCancelarPedido(){
+        let dialogRef = this.dialog.open(DialogCancelarPedidoComponent, {
+          panelClass: 'full-width-dialog',
+          height: '300px',
+          width: '600px',
+          data: this.pedidoId
+        });
+    
+        dialogRef.afterClosed().subscribe((result) => { 
+          if (result == true){ 
+            this.router.navigate(['pedidos']);
+          }
+        });
   }
 
   ngOnInit(): void {

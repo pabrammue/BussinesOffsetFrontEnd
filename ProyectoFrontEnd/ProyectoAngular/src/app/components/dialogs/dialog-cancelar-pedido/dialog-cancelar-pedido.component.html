@@ -1,0 +1,12 @@
+<div class="Contenido">
+    <div mat-dialog-content>
+        <h1>Atención</h1>
+        <h3>Esta acción no podrá deshacerse</h3>
+        <h3>¿Estás seguro de que quieres realizar esta acción?</h3>
+    </div>
+
+    <div mat-dialog-actions align="end" class="botones">
+        <button mat-raised-button (click)="cancelarPedido()" class="btnBorrar">Aceptar</button>
+        <button mat-raised-button (click)="dialog.close()">Cancelar</button>
+    </div>
+</div>
