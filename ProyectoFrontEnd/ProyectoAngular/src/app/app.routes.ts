@@ -11,7 +11,7 @@ import { CrearPedidoComponent } from './components/crear-pedido/crear-pedido.com
 export const routes: Routes = [
     { path: 'login', component: LoginComponent }, 
     {
-        path: '', component: LayoutComponent, //canActivate:[AuthGuard],
+        path: '', component: LayoutComponent, canActivate:[AuthGuard],
         children: 
         [
             { path: '', component: InicioComponent },

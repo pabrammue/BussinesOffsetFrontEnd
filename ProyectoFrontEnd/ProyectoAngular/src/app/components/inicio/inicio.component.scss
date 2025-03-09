@@ -1,10 +1,47 @@
-.contenido {
-    width: 87.5vw;
-    padding: 25px;
-    flex-grow: 1;
-    background: white;
-    border-radius: 8px;
-    margin: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    
+.superDiv {
+  display: flex;
+  align-items: center; // Centrar verticalmente
+  justify-content: center; // Centrar horizontalmente
+  width: 105rem; // Ocupar todo el ancho de la pantalla
+  height: 50rem; // Ocupar todo el alto de la pantalla
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  width: 220px; // Aumentado de 180px a 220px
+  height: 220px; // Aumentado de 180px a 220px
+  background: white;
+  border-radius: 16px; // Bordes más redondeados
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); // Sombra más pronunciada
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
   }
+
+  mat-icon {
+    //font-size: 56px; // Ícono más grande
+    color: #00a11b;
+  }
+
+  h3 {
+    margin-top: 12px;
+    font-size: 1.4rem; // Texto más grande
+    color: #333;
+    font-weight: bold;
+  }
+}

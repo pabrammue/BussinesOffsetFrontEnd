@@ -12,15 +12,25 @@ export class AuthService {
   user$ = user(this.firebaseAuth)
 
   constructor() {
-    setPersistence(this.firebaseAuth, browserSessionPersistence)
+    setPersistence(this.firebaseAuth, browserSessionPersistence)// browserSessionPersistence significa que la sesión solo dura mientras la pestaña esté abierta
    }
-  //currentUserSig = signal<
 
+
+  /**
+   * Método que intenta realizar el login en firebase
+   * @param email 
+   * @param password 
+   * @returns 
+   */
   login(email: string, password: string): Observable<void> {
     const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password).then(() => {});
     return from(promise)
   }
 
+  /**
+   * Método que cierra sesión de firebase
+   * @returns 
+   */
   logout(): Observable<void> {
     const promise = signOut(this.firebaseAuth).then(() => {});
     return from(promise);

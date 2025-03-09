@@ -27,6 +27,9 @@ export class DetallesPedidoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private pedidosServicio: PedidosService, private router: Router, public dialog: MatDialog) {}
 
+  /**
+   * Método que hace llamada a la api para obtener los detalles de un pedido
+   */
   obtenerPedido(){
     //this.pedido = this.pedidosServicio.pedidoId(this.pedidoId)
     this.pedidosServicio.getPedidoDetalles(this.pedidoId).subscribe({
@@ -69,6 +72,9 @@ export class DetallesPedidoComponent implements OnInit {
     });
   }*/
 
+  /**
+   * Método que abre el dialog para confirmar la acción
+   */
   abrirDialogCancelarPedido(){
         let dialogRef = this.dialog.open(DialogCancelarPedidoComponent, {
           panelClass: 'full-width-dialog',
@@ -84,6 +90,9 @@ export class DetallesPedidoComponent implements OnInit {
         });
   }
 
+  /**
+   * Métpodo que se inicia al abrir el componente, recibe un id por parámetro para poder hacer la llamada a la api
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.pedidoId = Number(params.get('id'));

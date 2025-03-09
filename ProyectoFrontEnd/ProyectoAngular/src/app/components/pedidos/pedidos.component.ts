@@ -25,6 +25,9 @@ export class PedidosComponent implements OnInit {
   obtenerPedidos(): void{
     //this.listadoPedidos = this.pedidosServicio.listadoPedidos()
 
+    /**
+     * Método que hace llamada a la api para obtener todos los pedido no cancelados en la bbdd
+     */
     this.pedidosServicio.getPedidos().subscribe({
       next:(response) =>{ 
         this.listadoPedidos = response;
@@ -40,14 +43,24 @@ export class PedidosComponent implements OnInit {
     });
   }
 
+  /**
+   * Método que va a la página de los detalles del pedido en el que se pulsa
+   * @param id id del pedido clickado
+   */
   abrirDetallesPedido(id): void{
     this.router.navigate(['detallesPedidos', id]);// navegar a otra vista y pasarle el id
   }
 
+  /**
+   * Método que redirige a la página de creación de un nuevo pedido
+   */
   abrirCrearPedido(): void{
     this.router.navigate(['crearNuevoPedido'])
   }
 
+  /**
+   * Método que se ejecuta al iniciar
+   */
   ngOnInit(): void {    
     this.obtenerPedidos(); 
   }

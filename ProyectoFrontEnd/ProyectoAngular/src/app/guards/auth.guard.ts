@@ -8,19 +8,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  private firebaseApp = inject(FirebaseApp); // 🔹 Inyecta la app de Firebase
+  private firebaseApp = inject(FirebaseApp); 
 
   constructor(private router: Router) {}
 
+  /**
+   * Método para la protección de rutas
+   * si el usuario está autorizado no hay problema peros si no lo está e intenta entrar a alguna ruta protegida redirige a la pantalla de login
+   * @returns 
+   */
   canActivate(): Observable<boolean> {
     return new Observable(observer => {
-      const auth = getAuth(this.firebaseApp); // 🔹 Usa la instancia de Firebase inicializada
+      const auth = getAuth(this.firebaseApp); 
 
       onAuthStateChanged(auth, (user: User | null) => {
         if (user) {
           observer.next(true);
         } else {
-          this.router.navigate(['/login']); // 🔹 Redirige correctamente al login
+          this.router.navigate(['/login']); 
           observer.next(false);
         }
         observer.complete();

@@ -8,14 +8,25 @@ import { Producto } from '../../Clases/producto';
   providedIn: 'root'
 })
 export class ProductosService {
-  urlApi="http://localhost:5030/api/proveedor";
+  urlApi="https://apibusinessoffset.azurewebsites.net/api/proveedor";
   constructor() { }
   http = inject(HttpClient); 
 
+  /**
+   * Llamada a la api de proveedor para obtener los productos de un proveedor
+   * @param idProveedor 
+   * @returns 
+   */
   getProductosProveedor(idProveedor): Observable<Producto[]>{
     return this.http.get<Producto[]>(this.urlApi + "/" + idProveedor + "/productos");
   }
 
+  /**
+   * Llamada a la api de proveedor para obtener los productos de un proveedor y una categoria
+   * @param idProveedor 
+   * @param idCategorias 
+   * @returns 
+   */
   getProductoProveedoresCategoria(idProveedor, idCategorias):Observable<Producto[]>{
     return this.http.get<Producto[]>(this.urlApi + "/" + idProveedor + "/categorias/" + idCategorias)
   }
